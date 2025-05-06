@@ -29,7 +29,7 @@ particlesJS("particles-js", {
         }
       },
       "size": {
-        "value": 3,
+        "value": 2.5,
         "random": true,
         "anim": {
             "enable": true,
@@ -42,7 +42,7 @@ particlesJS("particles-js", {
         "direction": "none",
         "random": true,
         "straight": false,
-        "speed": 1,
+        "speed": 0.5,
         "out_mode": "out",
         "attract.enable": false,
         "attract.rotateX": 600,
