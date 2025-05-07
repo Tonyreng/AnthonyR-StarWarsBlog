@@ -2,53 +2,64 @@ export const Header = () => {
   return (
     <>
       <header
-        className="d-flex justify-content-between"
+        className="d-flex justify-content-between p-4"
         style={{ height: "15%", width: "100%" }}
       >
-        <nav
-          className="navbar navbar-expand-lg"
-          style={{ backgroundColor: "transparent" }}
+        <div>
+          <ul className="nav">
+            <li className="nav-item m-2">
+              <a className="nav-link p-0" href="#">
+                <i
+                  className="fa-brands fa-tiktok text-white fs-5"
+                  style={{ fontWeight: "100" }}
+                ></i>
+              </a>
+            </li>
+            <li className="nav-item m-2">
+              <a className="nav-link p-0" href="#">
+                <i className="fa-brands fa-instagram text-white fs-5"></i>
+              </a>
+            </li>
+            <li className="nav-item m-2">
+              <a className="nav-link p-0" href="#">
+                <i className="fa-brands fa-x-twitter text-white fs-5"></i>
+              </a>
+            </li>
+            <li className="nav-item m-2">
+              <a className="nav-link p-0" href="#">
+                <i className="fa-brands fa-facebook text-white fs-5"></i>
+              </a>
+            </li>
+            <li className="nav-item m-2">
+              <a className="nav-link p-0" href="#">
+                <i className="fa-brands fa-youtube text-white fs-5"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <a href="#">
+            <img
+              src="https://lumiere-a.akamaihd.net/v1/images/sw_logo_stacked_2x-52b4f6d33087_7ef430af.png?region=0,0,586,254"
+              alt="StarWars logo"
+              style={{ height: "100%" }}
+            />
+          </a>
+        </div>
+        <div
+          className="d-flex justify-content-between text-white"
+          style={{ height: "fit-content" }}
         >
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <img
-                    srcSet="https://lumiere-a.akamaihd.net/v1/images/tiktok-logo-white_dd1a4867.svg?region=0%2C0%2C100%2C100"
-                    alt="Tiktok icon"
-                  />
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-            </ul>
+          <div className="d-flex justify-content-between m-2">
+            <i className="fa-solid fa-magnifying-glass m-2"></i>
+            <p>SEARCH</p>
           </div>
-        </nav>
-        <div></div>
-        <div></div>
+          <div className="d-flex justify-content-between m-2">
+            <i className="fa-solid fa-user m-2"></i>
+            <p>LOG IN</p>
+          </div>
+        </div>
       </header>
     </>
   );
