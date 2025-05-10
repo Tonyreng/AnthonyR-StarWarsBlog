@@ -14,6 +14,7 @@ export const initialStore=()=>{
       }
     ],
     characters: [],
+    planets: [],
   }
 }
 
@@ -31,6 +32,11 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         characters: action.payload,
+      }
+    case 'set_Planets': 
+      return {
+        ...store,
+        planets: action.payload,
       }
     default:
       throw Error('Unknown action.');
