@@ -7,9 +7,9 @@ import { Header } from "../components/Header";
 // Base component that maintains the navbar and footer throughout the page and the scroll to top functionality.
 export const Layout = () => {
   return (
-    <ScrollToTop>
+    <>
+      <Header />
       <Outlet />
-      <Footer />
-    </ScrollToTop>
+    </>
   );
 };

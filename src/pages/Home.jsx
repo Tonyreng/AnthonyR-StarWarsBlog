@@ -90,7 +90,6 @@ export const Home = () => {
 
   return (
     <>
-      <Header />
       <div className="container">
         <Slaider
           title="Characters"

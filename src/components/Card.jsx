@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
+
 export const Card = (value) => {
+  const navigate = useNavigate();
   return (
     <div
       className="card mx-2 text-white border border-secondary rounded "
@@ -11,7 +15,7 @@ export const Card = (value) => {
       />
       <div className="card-body rounded" style={{ background: "#1D1E1F" }}>
         <div className="d-flex justify-content-between align-items-center mb-3 mt-1">
-          <span>
+          <span style={{ cursor: "pointer" }} onClick={() => navigate("/:name")}>
             <strong>{value.name}</strong>
           </span>
           <i className="fa-solid fa-heart" style={{ cursor: "pointer" }}></i>
