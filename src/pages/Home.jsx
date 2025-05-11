@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 
 import { Navigation, Pagination } from "swiper/modules";
 import { Link, NavLink } from "react-router-dom";
+import { Slaider } from "../components/Slaider.jsx";
 
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -36,82 +37,126 @@ export const Home = () => {
       ) // Log the JSON response to your console
       .catch((error) => console.error(error));
   };
+
+  const vehilclesApi = () => {
+    fetch("https://swapi.info/api/vehicles")
+      .then((res) => res.json())
+      .then((data) =>
+        dispatch({
+          type: "set_Vehicles",
+          payload: data,
+        })
+      )
+      .catch((error) => console.error(error));
+  };
+
+  const starshipsApi = () => {
+    fetch("https://swapi.info/api/starships")
+      .then((res) => res.json())
+      .then((data) =>
+        dispatch({
+          type: "set_Starships",
+          payload: data,
+        })
+      )
+      .catch((error) => console.error(error));
+  };
+
+  const speciesApi = () => {
+    fetch("https://swapi.info/api/species")
+      .then((res) => res.json())
+      .then((data) =>
+        dispatch({
+          type: "set_Species",
+          payload: data,
+        })
+      )
+      .catch((error) => console.error(error));
+  };
+
   useEffect(() => {
     peopleApi();
     planetsApi();
+    vehilclesApi();
+    starshipsApi();
+    speciesApi();
   }, []);
 
-  let characters = store.characters;
-  let planets = store.planets;
+  const characters = store.characters;
+  const planets = store.planets;
+  const vehicles = store.vehicles;
+  const starships = store.starships;
+  const species = store.species;
 
   return (
     <>
       <Header />
       <div className="container">
-        <div className="mb-5">
-          <div
-            className="d-flex justify-content-between align-items-center mb-4"
-            style={{ borderBottom: "1px solid #48494a" }}
-          >
-            <h2 className="text-white">Characters</h2>
-            <Link to="/">SEE ALL</Link>
-          </div>
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={20}
-            slidesPerView={3}
-            navigation
-            breakpoints={{
-              300: { slidesPerView: 1 },
-              768: { slidesPerView: 2 },
-              1000: { slidesPerView: 3 },
-              1400: { slidesPerView: 4 },
-            }}
-          >
-            {characters.map((character, idx) => (
-              <SwiperSlide key={idx} id={character.uid}>
-                <Card
-                  name={character.name}
-                  data1={`Gender: ${character.gender}`}
-                  data2={`Hair color: ${character.hair_color}`}
-                  data3={`Eye color: ${character.eye_color}`}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-        <div>
-          <div
-            className="d-flex justify-content-between align-items-center mb-4"
-            style={{ borderBottom: "1px solid #48494a" }}
-          >
-            <h2>Planets</h2>
-            <Link to="/">SEE ALL</Link>
-          </div>
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={20}
-            slidesPerView={3}
-            navigation
-            breakpoints={{
-              300: { slidesPerView: 1 },
-              768: { slidesPerView: 2 },
-              1000: { slidesPerView: 3 },
-              1400: { slidesPerView: 4 },
-            }}
-          >
-            {planets.map((character, idx) => (
-              <SwiperSlide key={idx} id={character.uid}>
-                <Card
-                  name={character.name}
-                  data1={`Gender: ${character.gender}`}
-                  data2={`Hair color: ${character.hair_color}`}
-                  data3={`Eye color: ${character.eye_color}`}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+        <Slaider
+          title="Characters"
+          list={characters.map((elem, idx) => (
+            <SwiperSlide key={idx} id={elem.name}>
+              <Card
+                name={elem.name}
+                data1={`Gender: ${elem.gender}`}
+                data2={`Hair color: ${elem.hair_color}`}
+                data3={`Eye color: ${elem.eye_color}`}
+              />
+            </SwiperSlide>
+          ))}
+        />
+
+        <Slaider
+          title="Species"
+          list={species.map((elem, idx) => (
+            <SwiperSlide key={idx} id={elem.name}>
+              <Card
+                name={elem.name}
+                data1={`Homeworld: ${elem.homeworld}`}
+                data2={`Language: ${elem.language}`}
+              />
+            </SwiperSlide>
+          ))}
+        />
+
+        <Slaider
+          title="Planets"
+          list={planets.map((elem, idx) => (
+            <SwiperSlide key={idx} id={elem.name}>
+              <Card
+                name={elem.name}
+                data1={`Population: ${elem.population}`}
+                data2={`Terrain: ${elem.terrain}`}
+              />
+            </SwiperSlide>
+          ))}
+        />
+
+        <Slaider
+          title="Vehicles"
+          list={vehicles.map((elem, idx) => (
+            <SwiperSlide key={idx} id={elem.name}>
+              <Card
+                name={elem.name}
+                data1={`Model: ${elem.model}`}
+                data2={`Class: ${elem.vehicle_class}`}
+              />
+            </SwiperSlide>
+          ))}
+        />
+
+        <Slaider
+          title="Starships"
+          list={starships.map((elem, idx) => (
+            <SwiperSlide key={idx} id={elem.name}>
+              <Card
+                name={elem.name}
+                data1={`Model: ${elem.model}`}
+                data2={`Class: ${elem.starship_class}`}
+              />
+            </SwiperSlide>
+          ))}
+        />
       </div>
     </>
   );
