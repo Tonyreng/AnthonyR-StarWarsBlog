@@ -9,7 +9,7 @@ import { Layout } from "./pages/Layout";
 import { Home } from "./pages/Home";
 import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
-import { Description } from "./pages/DescriptionCharacters";
+import { DescriptionCharacters } from "./pages/DescriptionCharacters";
 
 export const router = createBrowserRouter(
   [
@@ -18,7 +18,7 @@ export const router = createBrowserRouter(
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
-        { path: ":name", element: <Description /> },
+        { path: ":name", element: <DescriptionCharacters/> },
       ],
     },
   ]

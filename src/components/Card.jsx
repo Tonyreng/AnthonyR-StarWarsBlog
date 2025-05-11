@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-
 export const Card = (value) => {
   const navigate = useNavigate();
   return (
@@ -11,11 +10,14 @@ export const Card = (value) => {
       <img
         src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/12/star-wars-scaled.jpg?fit=2560%2C1440&quality=50&strip=all&ssl=1"
         className="card-img-top"
-        alt="..."
+        alt={`Imagen de ${value.name}`}
       />
       <div className="card-body rounded" style={{ background: "#1D1E1F" }}>
         <div className="d-flex justify-content-between align-items-center mb-3 mt-1">
-          <span style={{ cursor: "pointer" }} onClick={() => navigate("/:name")}>
+          <span
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/:name")}
+          >
             <strong>{value.name}</strong>
           </span>
           <i className="fa-solid fa-heart" style={{ cursor: "pointer" }}></i>
