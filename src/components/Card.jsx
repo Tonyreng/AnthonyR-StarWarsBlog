@@ -17,7 +17,7 @@ export const Card = (value) => {
         <div className="d-flex justify-content-between align-items-center mb-3 mt-1">
           <span
             style={{ cursor: "pointer" }}
-            onClick={() => navigate(`/character/${value.idx}`)}
+            onClick={() => navigate(`/${value.page}/${value.idx}`)}
           >
             <strong>{value.name}</strong>
           </span>
