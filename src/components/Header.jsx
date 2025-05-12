@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 export const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <header
@@ -48,6 +52,7 @@ export const Header = () => {
               src="https://lumiere-a.akamaihd.net/v1/images/sw_logo_stacked_2x-52b4f6d33087_7ef430af.png?region=0,0,586,254"
               alt="StarWars logo"
               style={{ height: "126px", width: "291px" }}
+              onClick={() => navigate("/")}
             />
           </a>
         </div>
@@ -56,12 +61,18 @@ export const Header = () => {
           style={{ height: "fit-content" }}
         >
           <div className="d-flex justify-content-between align-items-center m-2">
-            <i className="fa-solid fa-magnifying-glass m-2" style={{cursor: 'pointer'}}></i>
-            <span style={{cursor: 'pointer'}}>SEARCH</span>
+            <i
+              className="fa-solid fa-magnifying-glass m-2"
+              style={{ cursor: "pointer" }}
+            ></i>
+            <span style={{ cursor: "pointer" }}>SEARCH</span>
           </div>
           <div className="d-flex justify-content-between align-items-center m-2">
-            <i className="fa-solid fa-user m-2" style={{cursor: 'pointer'}}></i>
-            <span style={{cursor: 'pointer'}}>LOG IN</span>
+            <i
+              className="fa-solid fa-user m-2"
+              style={{ cursor: "pointer" }}
+            ></i>
+            <span style={{ cursor: "pointer" }}>LOG IN</span>
           </div>
         </div>
       </header>

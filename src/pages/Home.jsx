@@ -94,9 +94,10 @@ export const Home = () => {
         <Slaider
           title="Characters"
           list={characters.map((elem, idx) => (
-            <SwiperSlide key={idx} id={elem.name}>
+            <SwiperSlide key={idx} id={idx}>
               <Card
                 name={elem.name}
+                idx={idx}
                 data1={`Gender: ${elem.gender}`}
                 data2={`Hair color: ${elem.hair_color}`}
                 data3={`Eye color: ${elem.eye_color}`}
@@ -108,9 +109,10 @@ export const Home = () => {
         <Slaider
           title="Species"
           list={species.map((elem, idx) => (
-            <SwiperSlide key={idx} id={elem.name}>
+            <SwiperSlide key={idx} id={idx}>
               <Card
                 name={elem.name}
+                idx={idx}
                 data1={`Homeworld: ${elem.homeworld}`}
                 data2={`Language: ${elem.language}`}
               />
@@ -121,9 +123,10 @@ export const Home = () => {
         <Slaider
           title="Planets"
           list={planets.map((elem, idx) => (
-            <SwiperSlide key={idx} id={elem.name}>
+            <SwiperSlide key={idx} id={idx}>
               <Card
                 name={elem.name}
+                idx={idx}
                 data1={`Population: ${elem.population}`}
                 data2={`Terrain: ${elem.terrain}`}
               />
@@ -134,9 +137,10 @@ export const Home = () => {
         <Slaider
           title="Vehicles"
           list={vehicles.map((elem, idx) => (
-            <SwiperSlide key={idx} id={elem.name}>
+            <SwiperSlide key={idx} id={idx}>
               <Card
                 name={elem.name}
+                idx={idx}
                 data1={`Model: ${elem.model}`}
                 data2={`Class: ${elem.vehicle_class}`}
               />
@@ -147,9 +151,10 @@ export const Home = () => {
         <Slaider
           title="Starships"
           list={starships.map((elem, idx) => (
-            <SwiperSlide key={idx} id={elem.name}>
+            <SwiperSlide key={idx} id={idx}>
               <Card
                 name={elem.name}
+                idx={idx}
                 data1={`Model: ${elem.model}`}
                 data2={`Class: ${elem.starship_class}`}
               />

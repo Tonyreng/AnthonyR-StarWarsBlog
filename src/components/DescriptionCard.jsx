@@ -17,7 +17,7 @@ export const DescriptionCard = (props) => {
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title fs-1">{props.name}</h5>
+            <h5 className="card-title fs-1" style={{color: "#FF1744"}}>{props.name}</h5>
             <p className="card-text">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis
               rem quos adipisci doloremque aspernatur est nemo delectus iure

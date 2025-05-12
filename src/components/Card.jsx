@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 export const Card = (value) => {
@@ -16,7 +17,7 @@ export const Card = (value) => {
         <div className="d-flex justify-content-between align-items-center mb-3 mt-1">
           <span
             style={{ cursor: "pointer" }}
-            onClick={() => navigate("/:name")}
+            onClick={() => navigate(`/character/${value.idx}`)}
           >
             <strong>{value.name}</strong>
           </span>
