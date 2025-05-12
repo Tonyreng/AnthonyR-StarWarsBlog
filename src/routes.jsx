@@ -10,6 +10,7 @@ import { Home } from "./pages/Home";
 import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 import { DescriptionCharacters } from "./pages/DescriptionCharacters";
+import { DescriptionSpecies } from "./pages/DescriptionSpecies";
 
 export const router = createBrowserRouter(
   [
@@ -19,6 +20,7 @@ export const router = createBrowserRouter(
       children: [
         { index: true, element: <Home /> },
         { path: "/character/:id", element: <DescriptionCharacters/> },
+        { path: "/species/:id", element: <DescriptionSpecies/> },
       ],
     },
   ]

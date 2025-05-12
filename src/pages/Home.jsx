@@ -98,7 +98,7 @@ export const Home = () => {
               <Card
                 name={elem.name}
                 idx={idx}
-                page={'character'}
+                page={"character"}
                 data1={`Gender: ${elem.gender}`}
                 data2={`Hair color: ${elem.hair_color}`}
                 data3={`Eye color: ${elem.eye_color}`}
@@ -114,6 +114,7 @@ export const Home = () => {
               <Card
                 name={elem.name}
                 idx={idx}
+                page={"species"}
                 data1={`Homeworld: ${elem.homeworld}`}
                 data2={`Language: ${elem.language}`}
               />

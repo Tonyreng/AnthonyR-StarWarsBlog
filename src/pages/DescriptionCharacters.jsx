@@ -50,7 +50,6 @@ export const DescriptionCharacters = () => {
     const fetchData = async () => {
       const data = await getCharacterDetails(characters[params.id]);
       setCharacterDetails(data);
-      console.log(data);
     };
 
     fetchData();
@@ -82,7 +81,9 @@ export const DescriptionCharacters = () => {
           title9={"Appearances"}
           data9={
             characterDetails ? (
-              characterDetails.films.map((film) => <p>{film.title}</p>)
+              characterDetails.films.map((film, idx) => (
+                <p key={idx}>{film.title}</p>
+              ))
             ) : (
               <p>Charging</p>
             )
@@ -90,7 +91,9 @@ export const DescriptionCharacters = () => {
           title10={"Vehicles"}
           data10={
             characterDetails ? (
-              characterDetails.vehicles.map((vehicle) => <p>{vehicle.name}</p>)
+              characterDetails.vehicles.map((vehicle, idx) => (
+                <p key={idx}>{vehicle.name}</p>
+              ))
             ) : (
               <p>Charging</p>
             )
@@ -98,8 +101,8 @@ export const DescriptionCharacters = () => {
           title11={"Starships"}
           data11={
             characterDetails ? (
-              characterDetails.starships.map((starship) => (
-                <p>{starship.name}</p>
+              characterDetails.starships.map((starship, idx) => (
+                <p key={idx}>{starship.name}</p>
               ))
             ) : (
               <p>Charging</p>
