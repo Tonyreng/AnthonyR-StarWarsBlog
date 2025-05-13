@@ -144,6 +144,7 @@ export const Home = () => {
               <Card
                 name={elem.name}
                 idx={idx}
+                page={"vehicles"}
                 data1={`Model: ${elem.model}`}
                 data2={`Class: ${elem.vehicle_class}`}
               />

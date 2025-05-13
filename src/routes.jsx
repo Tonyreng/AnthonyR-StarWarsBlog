@@ -12,6 +12,7 @@ import { Demo } from "./pages/Demo";
 import { DescriptionCharacters } from "./pages/DescriptionCharacters";
 import { DescriptionSpecies } from "./pages/DescriptionSpecies";
 import { DescriptionPlanets } from "./pages/DescriptionPlanets";
+import { DescriptionVehicles } from "./pages/DescriptionVehicles";
 
 export const router = createBrowserRouter(
   [
@@ -23,6 +24,7 @@ export const router = createBrowserRouter(
         { path: "/character/:id", element: <DescriptionCharacters /> },
         { path: "/species/:id", element: <DescriptionSpecies /> },
         { path: "/planets/:id", element: <DescriptionPlanets /> },
+        { path: "/vehicles/:id", element: <DescriptionVehicles /> },
       ],
     },
   ]
