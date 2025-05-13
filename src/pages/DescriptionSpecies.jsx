@@ -56,15 +56,13 @@ export const DescriptionSpecies = () => {
   return (
     <div className="container-fluid">
       <div className="d-flex justify-content-center mb-5">
-        <DescriptionCard
-          name={species[params.id] ? species[params.id].name : "Cargando"}
-        />
+        <DescriptionCard name={species[params.id].name} />
       </div>
       <div>
         <DescriptionDetails
           title1={"Classification"}
           data1={speciesDetails ? speciesDetails.classification : "Charging"}
-          title2={"designation"}
+          title2={"Designation"}
           data2={speciesDetails ? speciesDetails.designation : "Charging"}
           title3={"Average height"}
           data3={speciesDetails ? speciesDetails.average_height : "Charging"}
@@ -77,7 +75,7 @@ export const DescriptionSpecies = () => {
           title7={"Average lifespan"}
           data7={speciesDetails ? speciesDetails.average_lifespan : "Charging"}
           title8={"Language"}
-          data8={speciesDetails && speciesDetails.language}
+          data8={speciesDetails ? speciesDetails.language : "Charging"}
           title9={"Homeworld"}
           data9={speciesDetails?.homeworld?.name || "n/a"}
           title10={"People"}

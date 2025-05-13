@@ -11,6 +11,7 @@ import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 import { DescriptionCharacters } from "./pages/DescriptionCharacters";
 import { DescriptionSpecies } from "./pages/DescriptionSpecies";
+import { DescriptionPlanets } from "./pages/DescriptionPlanets";
 
 export const router = createBrowserRouter(
   [
@@ -19,8 +20,9 @@ export const router = createBrowserRouter(
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
-        { path: "/character/:id", element: <DescriptionCharacters/> },
-        { path: "/species/:id", element: <DescriptionSpecies/> },
+        { path: "/character/:id", element: <DescriptionCharacters /> },
+        { path: "/species/:id", element: <DescriptionSpecies /> },
+        { path: "/planets/:id", element: <DescriptionPlanets /> },
       ],
     },
   ]

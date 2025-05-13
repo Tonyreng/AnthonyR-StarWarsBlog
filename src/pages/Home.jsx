@@ -129,6 +129,7 @@ export const Home = () => {
               <Card
                 name={elem.name}
                 idx={idx}
+                page={"planets"}
                 data1={`Population: ${elem.population}`}
                 data2={`Terrain: ${elem.terrain}`}
               />
