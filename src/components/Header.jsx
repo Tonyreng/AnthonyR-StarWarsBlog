@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const { store, dispatch } = useGlobalReducer();
+  const favorites = store.favorites;
 
   return (
     <>
@@ -13,7 +16,7 @@ export const Header = () => {
           borderBottom: "1px solid #48494a",
         }}
       >
-        <div className="flex-grow-1">
+        <div style={{ width: "33.33%" }}>
           <ul className="nav">
             <li className="nav-item m-2">
               <a className="nav-link p-0" href="#">
@@ -46,7 +49,10 @@ export const Header = () => {
           </ul>
         </div>
 
-        <div className="flex-grow-1 d-flex justify-content-center">
+        <div
+          className="d-flex justify-content-center"
+          style={{ width: "33.33%" }}
+        >
           <a href="#">
             <img
               src="https://lumiere-a.akamaihd.net/v1/images/sw_logo_stacked_2x-52b4f6d33087_7ef430af.png?region=0,0,586,254"
@@ -57,8 +63,8 @@ export const Header = () => {
           </a>
         </div>
         <div
-          className="d-flex justify-content-end align-items-center text-white flex-grow-1"
-          style={{ height: "fit-content" }}
+          className="d-flex justify-content-end align-items-center text-white"
+          style={{ height: "fit-content", width: "33.33%" }}
         >
           <div className="d-flex justify-content-between align-items-center m-2">
             <i
@@ -68,11 +74,29 @@ export const Header = () => {
             <span style={{ cursor: "pointer" }}>SEARCH</span>
           </div>
           <div className="d-flex justify-content-between align-items-center m-2">
-            <i
-              className="fa-solid fa-user m-2"
-              style={{ cursor: "pointer" }}
-            ></i>
-            <span style={{ cursor: "pointer" }}>LOG IN</span>
+            <select
+              className="form-select form-select-sm"
+              aria-label="Small select example"
+              defaultValue="default"
+              onChange={(e) => {
+                const selected = favorites[e.target.value];
+                if (selected) {
+                  navigate(`/${selected.page}/${selected.idx}`);
+                }
+              }}
+            >
+              <option value="default">
+                Favorites {favorites.length}
+              </option>
+              {favorites &&
+                favorites.map((favorite, idx) => {
+                  return (
+                    <option key={idx} value={idx}>
+                      {favorite.name}
+                    </option>
+                  );
+                })}
+            </select>
           </div>
         </div>
       </header>

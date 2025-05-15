@@ -1,8 +1,15 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const Card = (value) => {
   const navigate = useNavigate();
+  const { store, dispatch } = useGlobalReducer();
+  const isFavorite = store.favorites.some(
+    (favorite) => favorite.name === value.name
+  );
+
   return (
     <div
       className="card mx-2 text-white border border-secondary rounded "
@@ -21,7 +28,25 @@ export const Card = (value) => {
           >
             <strong>{value.name}</strong>
           </span>
-          <i className="fa-solid fa-heart" style={{ cursor: "pointer" }}></i>
+          <i
+            className="fa-solid fa-heart"
+            style={{
+              cursor: "pointer",
+              color: isFavorite ? "#FF1744" : "white",
+            }}
+            onClick={() => {
+              const favoriteEle = {
+                name: value.name,
+                page: value.page,
+                idx: value.idx,
+              };
+
+              return dispatch({
+                type: "set_Favorites",
+                payload: favoriteEle,
+              });
+            }}
+          ></i>
         </div>
         <div className="d-flex flex-column">
           {value.data1 && <span>{value.data1.toUpperCase()}</span>}
