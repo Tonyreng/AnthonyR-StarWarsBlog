@@ -16,9 +16,13 @@ export const Card = (value) => {
       style={{ minWidth: "18rem", background: "#1D1E1F", minHeight: "21rem" }}
     >
       <img
-        src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/12/star-wars-scaled.jpg?fit=2560%2C1440&quality=50&strip=all&ssl=1"
+        src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/${value.imagePage}/${value.uid}.jpg`}
         className="card-img-top"
         alt={`Imagen de ${value.name}`}
+        onError={(e) =>
+          (e.target.src =
+            "https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/12/star-wars-scaled.jpg?fit=2560%2C1440&quality=50&strip=all&ssl=1")
+        }
       />
       <div className="card-body rounded" style={{ background: "#1D1E1F" }}>
         <div className="d-flex justify-content-between align-items-center mb-3 mt-1">

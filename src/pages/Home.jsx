@@ -28,13 +28,13 @@ export const Home = () => {
 
   const planetsApi = () => {
     fetch("https://swapi.info/api/planets")
-      .then((res) => res.json()) // Parse the JSON content from the API to be consumed
+      .then((res) => res.json())
       .then((data) =>
         dispatch({
           type: "set_Planets",
           payload: data,
         })
-      ) // Log the JSON response to your console
+      )
       .catch((error) => console.error(error));
   };
 
@@ -87,6 +87,7 @@ export const Home = () => {
   const vehicles = store.vehicles;
   const starships = store.starships;
   const species = store.species;
+  console.log(characters);
 
   return (
     <>
@@ -98,7 +99,9 @@ export const Home = () => {
               <Card
                 name={elem.name}
                 idx={idx}
+                uid={elem.url.split("/")[5]}
                 page={"character"}
+                imagePage={"people"}
                 data1={`Gender: ${elem.gender}`}
                 data2={`Hair color: ${elem.hair_color}`}
                 data3={`Eye color: ${elem.eye_color}`}
@@ -114,8 +117,10 @@ export const Home = () => {
               <Card
                 name={elem.name}
                 idx={idx}
+                uid={elem.url.split("/")[5]}
                 page={"species"}
-                data1={`Homeworld: ${elem.homeworld}`}
+                imagePage={"species"}
+                data1={`Classification: ${elem.classification}`}
                 data2={`Language: ${elem.language}`}
               />
             </SwiperSlide>
@@ -129,7 +134,9 @@ export const Home = () => {
               <Card
                 name={elem.name}
                 idx={idx}
+                uid={elem.url.split("/")[5]}
                 page={"planets"}
+                imagePage={"planets"}
                 data1={`Population: ${elem.population}`}
                 data2={`Terrain: ${elem.terrain}`}
               />
@@ -144,7 +151,9 @@ export const Home = () => {
               <Card
                 name={elem.name}
                 idx={idx}
+                uid={elem.url.split("/")[5]}
                 page={"vehicles"}
+                imagePage={"vehicles"}
                 data1={`Model: ${elem.model}`}
                 data2={`Class: ${elem.vehicle_class}`}
               />
@@ -159,7 +168,9 @@ export const Home = () => {
               <Card
                 name={elem.name}
                 idx={idx}
+                uid={elem.url.split("/")[5]}
                 page={"starships"}
+                imagePage={"starships"}
                 data1={`Model: ${elem.model}`}
                 data2={`Class: ${elem.starship_class}`}
               />
