@@ -50,6 +50,21 @@ export const Home = () => {
     };
   };
 
+  const getSpeciesDetails = async (species) => {
+    const homeworld = species.homeworld
+      ? await fetchDataFromUrl(species.homeworld)
+      : null;
+    const films = await fetchMultipleData(species.films);
+    const people = await fetchMultipleData(species.people);
+
+    return {
+      ...species,
+      homeworld,
+      films,
+      people,
+    };
+  };
+
   const peopleApi = async () => {
     try {
       const response = await fetch("https://swapi.info/api/people");
@@ -64,19 +79,22 @@ export const Home = () => {
     } catch (error) {
       return console.error(error);
     }
-    // fetch("https://swapi.info/api/people")
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     const simpleData = data.map((elem) => {
-    //       return getCharacterDetails(elem);
-    //     });
-    //     console.log(simpleData);
-    //     dispatch({
-    //       type: "set_Characters",
-    //       payload: data,
-    //     });
-    //   })
-    //   .catch((error) => console.error(error));
+  };
+
+  const speciesApi = async () => {
+    try {
+      const response = await fetch("https://swapi.info/api/species");
+      const data = await response.json();
+      const simpleData = await Promise.all(
+        data.map((elem) => getSpeciesDetails(elem))
+      );
+      return dispatch({
+        type: "set_Species",
+        payload: simpleData,
+      });
+    } catch (error) {
+      return console.error(error);
+    }
   };
 
   const planetsApi = () => {
@@ -115,18 +133,6 @@ export const Home = () => {
       .catch((error) => console.error(error));
   };
 
-  const speciesApi = () => {
-    fetch("https://swapi.info/api/species")
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({
-          type: "set_Species",
-          payload: data,
-        })
-      )
-      .catch((error) => console.error(error));
-  };
-
   useEffect(() => {
     peopleApi();
     planetsApi();
@@ -140,7 +146,6 @@ export const Home = () => {
   const vehicles = store.vehicles;
   const starships = store.starships;
   const species = store.species;
-
 
   return (
     <>
@@ -173,7 +178,7 @@ export const Home = () => {
                 uid={elem.url.split("/")[5]}
                 page={"species"}
                 imagePage={"species"}
-                data1={`Classification: ${elem.classification}`}
+                data1={`Homeworld: ${elem?.homeworld?.name || "n/a"}`}
                 data2={`Language: ${elem.language}`}
               />
             </SwiperSlide>
