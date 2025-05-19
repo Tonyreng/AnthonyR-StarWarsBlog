@@ -14,16 +14,69 @@ import { Slaider } from "../components/Slaider.jsx";
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
 
-  const peopleApi = () => {
-    fetch("https://swapi.info/api/people")
-      .then((res) => res.json()) //
-      .then((data) =>
-        dispatch({
-          type: "set_Characters",
-          payload: data,
-        })
-      )
-      .catch((error) => console.error(error));
+  const fetchDataFromUrl = async (url) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error al obtener datos de la URL:", error);
+    }
+  };
+
+  const fetchMultipleData = async (urls) => {
+    try {
+      const data = await Promise.all(urls.map((url) => fetchDataFromUrl(url)));
+      return data;
+    } catch (error) {
+      console.error("Error al obtener múltiples datos:", error);
+    }
+  };
+
+  const getCharacterDetails = async (character) => {
+    const homeworld = await fetchDataFromUrl(character.homeworld);
+    const films = await fetchMultipleData(character.films);
+    const starships = await fetchMultipleData(character.starships);
+    const vehicles = await fetchMultipleData(character.vehicles);
+    const species = await fetchMultipleData(character.species);
+
+    return {
+      ...character,
+      homeworld,
+      films,
+      starships,
+      vehicles,
+      species,
+    };
+  };
+
+  const peopleApi = async () => {
+    try {
+      const response = await fetch("https://swapi.info/api/people");
+      const data = await response.json();
+      const simpleData = await Promise.all(
+        data.map((elem) => getCharacterDetails(elem))
+      );
+      return dispatch({
+        type: "set_Characters",
+        payload: simpleData,
+      });
+    } catch (error) {
+      return console.error(error);
+    }
+    // fetch("https://swapi.info/api/people")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     const simpleData = data.map((elem) => {
+    //       return getCharacterDetails(elem);
+    //     });
+    //     console.log(simpleData);
+    //     dispatch({
+    //       type: "set_Characters",
+    //       payload: data,
+    //     });
+    //   })
+    //   .catch((error) => console.error(error));
   };
 
   const planetsApi = () => {
@@ -87,6 +140,7 @@ export const Home = () => {
   const vehicles = store.vehicles;
   const starships = store.starships;
   const species = store.species;
+
 
   return (
     <>
