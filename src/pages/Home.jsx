@@ -65,6 +65,21 @@ export const Home = () => {
     };
   };
 
+  const getPlanetsDetails = async (planets) => {
+    const residents = planets.residents.length
+      ? await fetchDataFromUrl(planets.residents)
+      : null;
+    const films = planets.films.length
+      ? await fetchMultipleData(planets.films)
+      : null;
+
+    return {
+      ...planets,
+      residents,
+      films,
+    };
+  };
+
   const peopleApi = async () => {
     try {
       const response = await fetch("https://swapi.info/api/people");
@@ -97,16 +112,20 @@ export const Home = () => {
     }
   };
 
-  const planetsApi = () => {
-    fetch("https://swapi.info/api/planets")
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({
-          type: "set_Planets",
-          payload: data,
-        })
-      )
-      .catch((error) => console.error(error));
+  const planetsApi = async () => {
+    try {
+      const response = await fetch("https://swapi.info/api/planets");
+      const data = await response.json();
+      const simpleData = await Promise.all(
+        data.map((elem) => getPlanetsDetails(elem))
+      );
+      return dispatch({
+        type: "set_Planets",
+        payload: simpleData,
+      });
+    } catch (error) {
+      return console.error(error);
+    }
   };
 
   const vehilclesApi = () => {
