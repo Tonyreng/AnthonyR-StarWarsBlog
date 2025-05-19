@@ -9,10 +9,11 @@ export const DescriptionCard = (props) => {
       <div className="row g-0">
         <div className="col-md-4">
           <img
-            src="https://yt3.googleusercontent.com/6h_TKBeaT6QOIqIkjFO96tEpEcbqmW9SiUtit0L0_J-fM5uwwqYGuEa78-Zpol3jnZFugoY=s900-c-k-c0x00ffffff-no-rj"
+            src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/${props.imagePage}/${props.uid}.jpg`}
             className="img-fluid rounded-start"
             alt="..."
             style={{ height: "100%" }}
+            onError={(e) => e.target.src= "https://yt3.googleusercontent.com/6h_TKBeaT6QOIqIkjFO96tEpEcbqmW9SiUtit0L0_J-fM5uwwqYGuEa78-Zpol3jnZFugoY=s900-c-k-c0x00ffffff-no-rj"}
           />
         </div>
         <div className="col-md-8">

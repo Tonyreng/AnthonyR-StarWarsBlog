@@ -58,7 +58,11 @@ export const DescriptionCharacters = () => {
   return (
     <div className="container-fluid">
       <div className="d-flex justify-content-center mb-5">
-        <DescriptionCard name={characters[params.id].name} />
+        <DescriptionCard
+          name={characters[params.id].name}
+          imagePage={"people"}
+          uid={characters[params.id].url.split("/")[5]}
+        />
       </div>
       <div>
         <DescriptionDetails

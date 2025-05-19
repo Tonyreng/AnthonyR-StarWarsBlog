@@ -56,7 +56,11 @@ export const DescriptionPlanets = () => {
   return (
     <div className="container-fluid">
       <div className="d-flex justify-content-center mb-5">
-        <DescriptionCard name={planets[params.id].name} />
+        <DescriptionCard
+          name={planets[params.id].name}
+          imagePage={"planets"}
+          uid={planets[params.id].url.split("/")[5]}
+        />
       </div>
       <div>
         <DescriptionDetails
@@ -85,11 +89,10 @@ export const DescriptionPlanets = () => {
           }
           title10={"Films"}
           data10={
-            planetDetails?.films && (
-              planetDetails.films.map((film, idx) => (
-                <p key={idx}>{film.title}</p>
-              ))
-            )
+            planetDetails?.films &&
+            planetDetails.films.map((film, idx) => (
+              <p key={idx}>{film.title}</p>
+            ))
           }
         />
       </div>

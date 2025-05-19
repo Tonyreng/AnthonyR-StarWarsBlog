@@ -87,7 +87,6 @@ export const Home = () => {
   const vehicles = store.vehicles;
   const starships = store.starships;
   const species = store.species;
-  console.log(characters);
 
   return (
     <>

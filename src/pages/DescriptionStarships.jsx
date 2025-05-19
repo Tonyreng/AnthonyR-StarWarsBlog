@@ -56,7 +56,8 @@ export const DescriptionStarships = () => {
   return (
     <div className="container-fluid">
       <div className="d-flex justify-content-center mb-5">
-        <DescriptionCard name={starships[params.id].name} />
+        <DescriptionCard name={starships[params.id].name} imagePage={"starships"}
+          uid={starships[params.id].url.split("/")[5]}/>
       </div>
       <div>
         <DescriptionDetails
