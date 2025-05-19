@@ -95,6 +95,21 @@ export const Home = () => {
     };
   };
 
+  const getStarshipsDetails = async (starships) => {
+    const pilots = starships.pilots.length
+      ? await fetchDataFromUrl(starships.pilots)
+      : null;
+    const films = starships.films.length
+      ? await fetchMultipleData(starships.films)
+      : null;
+
+    return {
+      ...starships,
+      pilots,
+      films,
+    };
+  };
+
   const peopleApi = async () => {
     try {
       const response = await fetch("https://swapi.info/api/people");
@@ -159,16 +174,20 @@ export const Home = () => {
     }
   };
 
-  const starshipsApi = () => {
-    fetch("https://swapi.info/api/starships")
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({
-          type: "set_Starships",
-          payload: data,
-        })
-      )
-      .catch((error) => console.error(error));
+  const starshipsApi = async () => {
+    try {
+      const response = await fetch("https://swapi.info/api/starships");
+      const data = await response.json();
+      const simpleData = await Promise.all(
+        data.map((elem) => getStarshipsDetails(elem))
+      );
+      return dispatch({
+        type: "set_Starships",
+        payload: simpleData,
+      });
+    } catch (error) {
+      return console.error(error);
+    }
   };
 
   useEffect(() => {
