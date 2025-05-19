@@ -80,6 +80,21 @@ export const Home = () => {
     };
   };
 
+  const getVehiclesDetails = async (vehicles) => {
+    const pilots = vehicles.pilots.length
+      ? await fetchDataFromUrl(vehicles.pilots)
+      : null;
+    const films = vehicles.films.length
+      ? await fetchMultipleData(vehicles.films)
+      : null;
+
+    return {
+      ...vehicles,
+      pilots,
+      films,
+    };
+  };
+
   const peopleApi = async () => {
     try {
       const response = await fetch("https://swapi.info/api/people");
@@ -128,16 +143,20 @@ export const Home = () => {
     }
   };
 
-  const vehilclesApi = () => {
-    fetch("https://swapi.info/api/vehicles")
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({
-          type: "set_Vehicles",
-          payload: data,
-        })
-      )
-      .catch((error) => console.error(error));
+  const vehiclesApi = async () => {
+    try {
+      const response = await fetch("https://swapi.info/api/vehicles");
+      const data = await response.json();
+      const simpleData = await Promise.all(
+        data.map((elem) => getVehiclesDetails(elem))
+      );
+      return dispatch({
+        type: "set_Vehicles",
+        payload: simpleData,
+      });
+    } catch (error) {
+      return console.error(error);
+    }
   };
 
   const starshipsApi = () => {
@@ -155,7 +174,7 @@ export const Home = () => {
   useEffect(() => {
     peopleApi();
     planetsApi();
-    vehilclesApi();
+    vehiclesApi();
     starshipsApi();
     speciesApi();
   }, []);

@@ -2,98 +2,74 @@ import { useParams } from "react-router-dom";
 import { DescriptionCard } from "../components/DescriptionCard";
 import { DescriptionDetails } from "../components/DescriptionDetails";
 import useGlobalReducer from "../hooks/useGlobalReducer";
-import { useEffect, useState } from "react";
 
 export const DescriptionVehicles = () => {
   const params = useParams();
-  const { store, dispatch } = useGlobalReducer();
+  const { store } = useGlobalReducer();
   const vehicles = store.vehicles;
-  const [vehicleDetails, setVehicleDetails] = useState(null);
-
-  const fetchDataFromUrl = async (url) => {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error al obtener datos de la URL:", error);
-    }
-  };
-
-  const fetchMultipleData = async (urls) => {
-    try {
-      const data = await Promise.all(urls.map((url) => fetchDataFromUrl(url)));
-      return data;
-    } catch (error) {
-      console.error("Error al obtener múltiples datos:", error);
-    }
-  };
-
-  const getVehiclesDetails = async (vehicles) => {
-    const pilots = vehicles.pilots.length
-      ? await fetchDataFromUrl(vehicles.pilots)
-      : null;
-    const films = vehicles.films.length
-      ? await fetchMultipleData(vehicles.films)
-      : null;
-
-    return {
-      ...vehicles,
-      pilots,
-      films,
-    };
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getVehiclesDetails(vehicles[params.id]);
-      setVehicleDetails(data);
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <div className="container-fluid">
       <div className="d-flex justify-content-center mb-5">
-        <DescriptionCard name={vehicles[params.id].name} imagePage={"vehicles"}
-          uid={vehicles[params.id].url.split("/")[5]}/>
+        <DescriptionCard
+          name={vehicles[params.id].name}
+          imagePage={"vehicles"}
+          uid={vehicles[params.id].url.split("/")[5]}
+        />
       </div>
       <div>
         <DescriptionDetails
           title1={"Model"}
-          data1={vehicleDetails ? vehicleDetails.model : "Charging"}
+          data1={vehicles[params.id] ? vehicles[params.id].model : "Charging"}
           title2={"Manufacturer"}
-          data2={vehicleDetails ? vehicleDetails.manufacturer : "Charging"}
+          data2={
+            vehicles[params.id] ? vehicles[params.id].manufacturer : "Charging"
+          }
           title3={"Cost in credits"}
-          data3={vehicleDetails ? vehicleDetails.cost_in_credits : "Charging"}
+          data3={
+            vehicles[params.id]
+              ? vehicles[params.id].cost_in_credits
+              : "Charging"
+          }
           title4={"Length"}
-          data4={vehicleDetails ? vehicleDetails.length : "Charging"}
+          data4={vehicles[params.id] ? vehicles[params.id].length : "Charging"}
           title5={"Max atmosphering speed"}
           data5={
-            vehicleDetails ? vehicleDetails.max_atmosphering_speed : "Charging"
+            vehicles[params.id]
+              ? vehicles[params.id].max_atmosphering_speed
+              : "Charging"
           }
           title6={"Crew"}
-          data6={vehicleDetails ? vehicleDetails.crew : "Charging"}
+          data6={vehicles[params.id] ? vehicles[params.id].crew : "Charging"}
           title7={"Passengers"}
-          data7={vehicleDetails ? vehicleDetails.passengers : "Charging"}
+          data7={
+            vehicles[params.id] ? vehicles[params.id].passengers : "Charging"
+          }
           title8={"Cargo capacity"}
-          data8={vehicleDetails ? vehicleDetails.cargo_capacity : "Charging"}
+          data8={
+            vehicles[params.id]
+              ? vehicles[params.id].cargo_capacity
+              : "Charging"
+          }
           title9={"Consumables"}
-          data9={vehicleDetails ? vehicleDetails.consumables : "Charging"}
+          data9={
+            vehicles[params.id] ? vehicles[params.id].consumables : "Charging"
+          }
           title10={"Vehicle class"}
-          data10={vehicleDetails ? vehicleDetails.vehicle_class : "Charging"}
+          data10={
+            vehicles[params.id] ? vehicles[params.id].vehicle_class : "Charging"
+          }
           title11={"Pilots"}
           data11={
-            vehicleDetails?.pilots &&
-            vehicleDetails.pilots.map((pilot, idx) => (
+            vehicles[params.id]?.pilots &&
+            vehicles[params.id].pilots.map((pilot, idx) => (
               <p key={idx}>{pilot.name}</p>
             ))
           }
           title12={"Films"}
           data12={
-            vehicleDetails?.films &&
-            vehicleDetails.films.map((film, idx) => (
+            vehicles[params.id]?.films &&
+            vehicles[params.id].films.map((film, idx) => (
               <p key={idx}>{film.title}</p>
             ))
           }
