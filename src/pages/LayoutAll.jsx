@@ -11,7 +11,7 @@ export const LayoutAll = () => {
   return (
     <>
       <Header />
-      <div className="container-fluid d-flex">
+      <div className="container-fluid">
         <SideBar />
         <Outlet />
       </div>

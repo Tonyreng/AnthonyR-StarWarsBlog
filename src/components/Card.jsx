@@ -22,7 +22,7 @@ export const Card = (value) => {
         onError={(e) => {
           e.target.onerror = null;
           e.target.src =
-            "https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/12/star-wars-scaled.jpg?fit=2560%2C1440&quality=50&strip=all&ssl=1";
+            "https://static.wikia.nocookie.net/starwars/images/c/cc/Star-wars-logo-new-tall.jpg/revision/latest?cb=20190313021755";
         }}
       />
       <div className="card-body rounded" style={{ background: "#1D1E1F" }}>

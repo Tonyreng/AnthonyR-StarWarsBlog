@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <>
       <header
-        className="d-flex p-4 mb-5"
+        className="d-flex p-4"
         style={{
           height: "15%",
           width: "100%",

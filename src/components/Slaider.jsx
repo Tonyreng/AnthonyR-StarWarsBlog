@@ -14,7 +14,7 @@ export const Slaider = (props) => {
   const { store, dispatch } = useGlobalReducer();
 
   return (
-    <div className="mb-5">
+    <div className="mt-5">
       <div
         className="d-flex justify-content-between align-items-center mb-4"
         style={{ borderBottom: "3px solid #48494a" }}
