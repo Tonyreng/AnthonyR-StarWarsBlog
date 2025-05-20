@@ -13,6 +13,13 @@ export const initialStore=()=>{
         background: null,
       }
     ],
+    dataList: [
+      "characters",
+      "planets",
+      "vehicles",
+      "starships",
+      "species",
+    ],
     characters: [],
     planets: [],
     vehicles: [],

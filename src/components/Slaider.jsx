@@ -20,7 +20,7 @@ export const Slaider = (props) => {
         style={{ borderBottom: "3px solid #48494a" }}
       >
         <h2 className="text-white">{props.title}</h2>
-        <Link to="/">SEE ALL</Link>
+        <Link to="/all">SEE ALL</Link>
       </div>
       <Swiper
         modules={[Navigation, Pagination]}
@@ -34,17 +34,7 @@ export const Slaider = (props) => {
           1400: { slidesPerView: 4 },
         }}
       >
-        {/* {props.list.map((elem, idx) => (
-          <SwiperSlide key={idx} id={elem.name}>
-            <Card
-              name={elem.name}
-              data1={props.data1}
-              data2={props.data2}
-              data3={props.data3}
-            />
-          </SwiperSlide>
-        ))} */}
-              {props.list}
+        {props.list}
       </Swiper>
     </div>
   );
