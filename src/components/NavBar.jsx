@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const NavBar = () => {
@@ -29,8 +29,11 @@ export const NavBar = () => {
         </button>
         {dataList.map((data) => {
           return (
-            <button
-              className="nav-link text-white"
+            <NavLink
+              to={`/all/${data}`}
+              className={({ isActive }) =>
+                isActive ? "nav-link active text-white" : "nav-link text-white"
+              }
               id="v-pills-home-tab"
               data-bs-toggle="pill"
               data-bs-target="#v-pills-home"
@@ -41,7 +44,7 @@ export const NavBar = () => {
               onClick={() => navigate(`${data}`)}
             >
               {data.toUpperCase()}
-            </button>
+            </NavLink>
           );
         })}
       </div>
