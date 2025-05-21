@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 
-export const SideBar = () => {
+export const NavBar = () => {
   const navigate = useNavigate();
   const { store, dispatch } = useGlobalReducer();
   const dataList = store.dataList;
@@ -23,6 +23,7 @@ export const SideBar = () => {
           role="tab"
           aria-controls="v-pills-home"
           aria-selected="true"
+          onClick={() => navigate("/all")}
         >
           ALL
         </button>
@@ -37,6 +38,7 @@ export const SideBar = () => {
               role="tab"
               aria-controls="v-pills-home"
               aria-selected="true"
+              onClick={() => navigate(`${data}`)}
             >
               {data.toUpperCase()}
             </button>

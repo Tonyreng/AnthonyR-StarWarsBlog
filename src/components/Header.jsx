@@ -19,7 +19,7 @@ export const Header = () => {
         <div style={{ width: "33.33%" }}>
           <ul className="nav">
             <li className="nav-item m-2">
-              <a className="nav-link p-0" href="#">
+              <a className="nav-link p-0" href="https://www.tiktok.com/@starwars" target="blank">
                 <i
                   className="fa-brands fa-tiktok text-white fs-5"
                   style={{ fontWeight: "100" }}
@@ -27,22 +27,22 @@ export const Header = () => {
               </a>
             </li>
             <li className="nav-item m-2">
-              <a className="nav-link p-0" href="#">
+              <a className="nav-link p-0" href="https://www.instagram.com/starwars/" target="blank">
                 <i className="fa-brands fa-instagram text-white fs-5"></i>
               </a>
             </li>
             <li className="nav-item m-2">
-              <a className="nav-link p-0" href="#">
+              <a className="nav-link p-0" href="https://twitter.com/starwars" target="blank">
                 <i className="fa-brands fa-x-twitter text-white fs-5"></i>
               </a>
             </li>
             <li className="nav-item m-2">
-              <a className="nav-link p-0" href="#">
+              <a className="nav-link p-0" href="https://www.facebook.com/StarWars" target="blank">
                 <i className="fa-brands fa-facebook text-white fs-5"></i>
               </a>
             </li>
             <li className="nav-item m-2">
-              <a className="nav-link p-0" href="#">
+              <a className="nav-link p-0" href="https://www.youtube.com/user/starwars" target="blank">
                 <i className="fa-brands fa-youtube text-white fs-5"></i>
               </a>
             </li>

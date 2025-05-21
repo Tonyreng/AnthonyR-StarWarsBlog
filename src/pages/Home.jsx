@@ -228,6 +228,7 @@ export const Home = () => {
 
         <Slaider
           title="Species"
+          page={"species"}
           list={species.map((elem, idx) => (
             <SwiperSlide key={idx} id={idx} page={"species"}>
               <Card
@@ -245,6 +246,7 @@ export const Home = () => {
 
         <Slaider
           title="Planets"
+          page={"planets"}
           list={planets.map((elem, idx) => (
             <SwiperSlide key={idx} id={idx} page={"planets"}>
               <Card
@@ -262,6 +264,7 @@ export const Home = () => {
 
         <Slaider
           title="Vehicles"
+          page={"vehicles"}
           list={vehicles.map((elem, idx) => (
             <SwiperSlide key={idx} id={idx} page={"vehicles"}>
               <Card
@@ -279,6 +282,7 @@ export const Home = () => {
 
         <Slaider
           title="Starships"
+          page={"starships"}
           list={starships.map((elem, idx) => (
             <SwiperSlide key={idx} id={idx} page={"starships"}>
               <Card

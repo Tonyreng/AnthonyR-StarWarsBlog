@@ -20,7 +20,7 @@ export const Slaider = (props) => {
         style={{ borderBottom: "3px solid #48494a" }}
       >
         <h2 className="text-white">{props.title}</h2>
-        <Link to="/all">SEE ALL</Link>
+        <Link to={`/all/${props.page}`} style={{color: "white", textDecoration: "none"}}>SEE ALL</Link>
       </div>
       <Swiper
         modules={[Navigation, Pagination]}

@@ -15,10 +15,10 @@ export const initialStore=()=>{
     ],
     dataList: [
       "characters",
+      "species",
       "planets",
       "vehicles",
       "starships",
-      "species",
     ],
     characters: [],
     planets: [],
