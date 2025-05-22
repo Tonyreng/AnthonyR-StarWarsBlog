@@ -18,6 +18,7 @@ export const AllVehicles = () => {
         return (
           <Card
             name={vehicle.name}
+            key={idx}
             idx={idx}
             uid={vehicle.url.split("/")[5]}
             page={"vehicles"}

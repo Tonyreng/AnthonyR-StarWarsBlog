@@ -18,6 +18,7 @@ export const AllCharacters = () => {
         return (
           <Card
             name={character.name}
+            key={idx}
             idx={idx}
             uid={character.url.split("/")[5]}
             page={"character"}

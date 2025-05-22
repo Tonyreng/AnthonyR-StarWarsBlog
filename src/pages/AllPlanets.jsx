@@ -18,6 +18,7 @@ export const AllPlanets = () => {
         return (
           <Card
             name={planet.name}
+            key={idx}
             idx={idx}
             uid={planet.url.split("/")[5]}
             page={"planets"}

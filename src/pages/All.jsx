@@ -22,6 +22,7 @@ export const All = () => {
         return (
           <Card
             name={character.name}
+            key={idx}
             idx={idx}
             uid={character.url.split("/")[5]}
             page={"character"}
@@ -36,6 +37,7 @@ export const All = () => {
         return (
           <Card
             name={specie.name}
+            key={idx}
             idx={idx}
             uid={specie.url.split("/")[5]}
             page={"species"}
@@ -49,6 +51,7 @@ export const All = () => {
         return (
           <Card
             name={planet.name}
+            key={idx}
             idx={idx}
             uid={planet.url.split("/")[5]}
             page={"planets"}
@@ -62,6 +65,7 @@ export const All = () => {
         return (
           <Card
             name={vehicle.name}
+            key={idx}
             idx={idx}
             uid={vehicle.url.split("/")[5]}
             page={"vehicles"}
@@ -75,6 +79,7 @@ export const All = () => {
         return (
           <Card
             name={starship.name}
+            key={idx}
             idx={idx}
             uid={starship.url.split("/")[5]}
             page={"starships"}

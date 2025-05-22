@@ -82,7 +82,7 @@ export const Home = () => {
 
   const getVehiclesDetails = async (vehicles) => {
     const pilots = vehicles.pilots.length
-      ? await fetchDataFromUrl(vehicles.pilots)
+      ? await fetchMultipleData(vehicles.pilots)
       : null;
     const films = vehicles.films.length
       ? await fetchMultipleData(vehicles.films)
@@ -97,7 +97,7 @@ export const Home = () => {
 
   const getStarshipsDetails = async (starships) => {
     const pilots = starships.pilots.length
-      ? await fetchDataFromUrl(starships.pilots)
+      ? await fetchMultipleData(starships.pilots)
       : null;
     const films = starships.films.length
       ? await fetchMultipleData(starships.films)
@@ -111,82 +111,129 @@ export const Home = () => {
   };
 
   const peopleApi = async () => {
-    try {
-      const response = await fetch("https://swapi.info/api/people");
-      const data = await response.json();
-      const simpleData = await Promise.all(
-        data.map((elem) => getCharacterDetails(elem))
-      );
+    const storedCharacters = localStorage.getItem("characters");
+    if (storedCharacters) {
       return dispatch({
         type: "set_Characters",
-        payload: simpleData,
+        payload: JSON.parse(storedCharacters),
       });
-    } catch (error) {
-      return console.error(error);
+    } else {
+      try {
+        const response = await fetch("https://swapi.info/api/people");
+        const data = await response.json();
+        const simpleData = await Promise.all(
+          data.map((elem) => getCharacterDetails(elem))
+        );
+        dispatch({
+          type: "set_Characters",
+          payload: simpleData,
+        });
+        localStorage.setItem("characters", JSON.stringify(simpleData));
+      } catch (error) {
+        return console.error(error);
+      }
     }
   };
 
   const speciesApi = async () => {
-    try {
-      const response = await fetch("https://swapi.info/api/species");
-      const data = await response.json();
-      const simpleData = await Promise.all(
-        data.map((elem) => getSpeciesDetails(elem))
-      );
+    const storedSpecies = localStorage.getItem("species");
+    if (storedSpecies) {
       return dispatch({
         type: "set_Species",
-        payload: simpleData,
+        payload: JSON.parse(storedSpecies),
       });
-    } catch (error) {
-      return console.error(error);
+    } else {
+      try {
+        const response = await fetch("https://swapi.info/api/species");
+        const data = await response.json();
+        const simpleData = await Promise.all(
+          data.map((elem) => getSpeciesDetails(elem))
+        );
+        dispatch({
+          type: "set_Species",
+          payload: simpleData,
+        });
+        localStorage.setItem("species", JSON.stringify(simpleData));
+      } catch (error) {
+        return console.error(error);
+      }
     }
   };
 
   const planetsApi = async () => {
-    try {
-      const response = await fetch("https://swapi.info/api/planets");
-      const data = await response.json();
-      const simpleData = await Promise.all(
-        data.map((elem) => getPlanetsDetails(elem))
-      );
+    const storedPlanets = localStorage.getItem("planets");
+    if (storedPlanets) {
       return dispatch({
         type: "set_Planets",
-        payload: simpleData,
+        payload: JSON.parse(storedPlanets),
       });
-    } catch (error) {
-      return console.error(error);
+    } else {
+      try {
+        const response = await fetch("https://swapi.info/api/planets");
+        const data = await response.json();
+        const simpleData = await Promise.all(
+          data.map((elem) => getPlanetsDetails(elem))
+        );
+        dispatch({
+          type: "set_Planets",
+          payload: simpleData,
+        });
+        localStorage.setItem("planets", JSON.stringify(simpleData));
+      } catch (error) {
+        return console.error(error);
+      }
     }
   };
 
   const vehiclesApi = async () => {
-    try {
-      const response = await fetch("https://swapi.info/api/vehicles");
-      const data = await response.json();
-      const simpleData = await Promise.all(
-        data.map((elem) => getVehiclesDetails(elem))
-      );
-      return dispatch({
+    const storedVehicles = localStorage.getItem("vehicles");
+    if (storedVehicles) {
+      dispatch({
         type: "set_Vehicles",
-        payload: simpleData,
+        payload: JSON.parse(storedVehicles),
       });
-    } catch (error) {
-      return console.error(error);
+      return;
+    } else {
+      try {
+        const response = await fetch("https://swapi.info/api/vehicles");
+        const data = await response.json();
+        const simpleData = await Promise.all(
+          data.map((elem) => getVehiclesDetails(elem))
+        );
+        dispatch({
+          type: "set_Vehicles",
+          payload: simpleData,
+        });
+        localStorage.setItem("vehicles", JSON.stringify(simpleData));
+      } catch (error) {
+        return console.error(error);
+      }
     }
   };
 
   const starshipsApi = async () => {
-    try {
-      const response = await fetch("https://swapi.info/api/starships");
-      const data = await response.json();
-      const simpleData = await Promise.all(
-        data.map((elem) => getStarshipsDetails(elem))
-      );
-      return dispatch({
+    const storedStarships = localStorage.getItem("starships");
+    if (storedStarships) {
+      dispatch({
         type: "set_Starships",
-        payload: simpleData,
+        payload: JSON.parse(storedStarships),
       });
-    } catch (error) {
-      return console.error(error);
+      return;
+    } else {
+      try {
+        const response = await fetch("https://swapi.info/api/starships");
+        const data = await response.json();
+        const simpleData = await Promise.all(
+          data.map((elem) => getStarshipsDetails(elem))
+        );
+        dispatch({
+          type: "set_Starships",
+          payload: simpleData,
+        });
+        localStorage.setItem("starships", JSON.stringify(simpleData));
+      } catch (error) {
+        return console.error(error);
+      }
     }
   };
 

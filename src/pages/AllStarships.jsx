@@ -18,6 +18,7 @@ export const AllStarships = () => {
         return (
           <Card
             name={starship.name}
+            key={idx}
             idx={idx}
             uid={starship.url.split("/")[5]}
             page={"starships"}

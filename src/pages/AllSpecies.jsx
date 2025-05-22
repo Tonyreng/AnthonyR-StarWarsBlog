@@ -18,6 +18,7 @@ export const AllSpecies = () => {
         return (
           <Card
             name={specie.name}
+            key={idx}
             idx={idx}
             uid={specie.url.split("/")[5]}
             page={"species"}

@@ -27,10 +27,11 @@ export const NavBar = () => {
         >
           ALL
         </button>
-        {dataList.map((data) => {
+        {dataList.map((data, idx) => {
           return (
             <NavLink
               to={`/all/${data}`}
+              key={idx}
               className={({ isActive }) =>
                 isActive ? "nav-link active text-white" : "nav-link text-white"
               }
