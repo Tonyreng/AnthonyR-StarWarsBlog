@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const DescriptionCard = (props) => {
   return (
     <div
-      className="card mb-3 text-white border-secondary"
+      className="card mb-3 text-white border-secondary mt-5"
       style={{ maxWidth: "960px", maxHeight: "520px", background: "#1D1E1F" }}
     >
       <div className="row g-0">
@@ -13,12 +13,17 @@ export const DescriptionCard = (props) => {
             className="img-fluid rounded-start"
             alt="..."
             style={{ height: "100%" }}
-            onError={(e) => e.target.src= "https://yt3.googleusercontent.com/6h_TKBeaT6QOIqIkjFO96tEpEcbqmW9SiUtit0L0_J-fM5uwwqYGuEa78-Zpol3jnZFugoY=s900-c-k-c0x00ffffff-no-rj"}
+            onError={(e) =>
+              (e.target.src =
+                "https://yt3.googleusercontent.com/6h_TKBeaT6QOIqIkjFO96tEpEcbqmW9SiUtit0L0_J-fM5uwwqYGuEa78-Zpol3jnZFugoY=s900-c-k-c0x00ffffff-no-rj")
+            }
           />
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title fs-1" style={{color: "#FF1744"}}>{props.name}</h5>
+            <h5 className="card-title fs-1" style={{ color: "#FF1744" }}>
+              {props.name}
+            </h5>
             <p className="card-text">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis
               rem quos adipisci doloremque aspernatur est nemo delectus iure

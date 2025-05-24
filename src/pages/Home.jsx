@@ -67,11 +67,11 @@ export const Home = () => {
 
   const getPlanetsDetails = async (planets) => {
     const residents = planets.residents.length
-      ? await fetchDataFromUrl(planets.residents)
-      : null;
+      ? await fetchMultipleData(planets.residents)
+      : [];
     const films = planets.films.length
       ? await fetchMultipleData(planets.films)
-      : null;
+      : [];
 
     return {
       ...planets,

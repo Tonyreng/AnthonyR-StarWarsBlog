@@ -28,3 +28,8 @@ strong:hover {
 .custom-pills {
   --bs-nav-pills-link-active-bg: #1D1E1F;
 }
+
+datalist {
+  overflow: hidden;
+  height: 50px;
+}
