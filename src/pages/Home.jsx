@@ -304,6 +304,7 @@ export const Home = () => {
                 imagePage={"planets"}
                 data1={`Population: ${elem.population}`}
                 data2={`Terrain: ${elem.terrain}`}
+                minHeight={"32rem"}
               />
             </SwiperSlide>
           ))}
@@ -322,6 +323,7 @@ export const Home = () => {
                 imagePage={"vehicles"}
                 data1={`Model: ${elem.model}`}
                 data2={`Class: ${elem.vehicle_class}`}
+                minHeight={"22rem"}
               />
             </SwiperSlide>
           ))}
@@ -340,6 +342,7 @@ export const Home = () => {
                 imagePage={"starships"}
                 data1={`Model: ${elem.model}`}
                 data2={`Class: ${elem.starship_class}`}
+                minHeight={"23rem"}
               />
             </SwiperSlide>
           ))}

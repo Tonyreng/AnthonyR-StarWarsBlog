@@ -13,7 +13,11 @@ export const Card = (value) => {
   return (
     <div
       className="card mx-2 text-white border border-secondary rounded "
-      style={{ minWidth: "18rem", background: "#1D1E1F", minHeight: "21rem" }}
+      style={{
+        minWidth: "18rem",
+        background: "#1D1E1F",
+        minHeight: value.minHeight || "21rem",
+      }}
     >
       <img
         src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/${value.imagePage}/${value.uid}.jpg`}
@@ -24,6 +28,8 @@ export const Card = (value) => {
           e.target.src =
             "https://static.wikia.nocookie.net/starwars/images/c/cc/Star-wars-logo-new-tall.jpg/revision/latest?cb=20190313021755";
         }}
+        onClick={() => navigate(`/${value.page}/${value.idx}`)}
+        style={{ cursor: "pointer" }}
       />
       <div className="card-body rounded" style={{ background: "#1D1E1F" }}>
         <div className="d-flex justify-content-between align-items-center mb-3 mt-1">
