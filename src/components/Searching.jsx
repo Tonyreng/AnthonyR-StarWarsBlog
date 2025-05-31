@@ -67,7 +67,7 @@ export const Searching = (props) => {
         placeholder="Search..."
         value={query}
         onChange={handleChange}
-        onBlur={(e) => setTimeout(() => props.handleOnBlur?.(e), 100)}
+        onBlur={(e) => setTimeout(() => props.handleOnBlur?.(e), 150)}
       />
       {suggestions.length > 0 && (
         <ul className="list-group position-absolute w-100 z-3">
